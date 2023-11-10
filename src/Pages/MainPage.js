@@ -3,6 +3,7 @@ import { Container, Row } from "react-bootstrap";
 import PostThumbnailsList from "../Components/PostThumbnailsList";
 import Loading from "../Components/Loading";
 import { getAllPosts } from "../lib/api";
+import Carrusel from '../Components/Carrusel';
 
 const MainPage = (props) => {
   const [posts, setPosts] = useState([]);
@@ -19,6 +20,8 @@ const MainPage = (props) => {
 
   return (
     <Container>
+      <h1 className="text-center">Últimos posts</h1>
+      <Carrusel />
       <Row
         xs={1}
         md={2}
@@ -32,6 +35,7 @@ const MainPage = (props) => {
         {isLoading && <Loading />}
         {!isLoading && <PostThumbnailsList posts={posts} />}
       </Row>
+      
     </Container>
   );
 };

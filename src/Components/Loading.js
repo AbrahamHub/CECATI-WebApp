@@ -12,7 +12,7 @@ const Loading = () => {
         aria-hidden="true"
       />
       <span className="ms-1">
-        <h3>Loading...</h3>
+        <h3>Cargando...</h3>
       </span>
     </div>
   );

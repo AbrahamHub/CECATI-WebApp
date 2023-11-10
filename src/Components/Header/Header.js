@@ -1,9 +1,9 @@
 import React from "react";
-import { Container, Dropdown, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
 import AuthContext from "../../store/auth-context";
 import { withTranslation } from "react-i18next";
-import Title from "../Title";
+
 
 class Header extends React.Component {
   static contextType = AuthContext;
@@ -38,7 +38,7 @@ class Header extends React.Component {
 
   render() {
     let { isLoggedIn, userName } = this.context;
-    const { t, i18n } = this.props;
+    const { t, } = this.props;
 
     return (
       <Container
@@ -50,31 +50,13 @@ class Header extends React.Component {
       >
         <Navbar bg="white" expand="sm">
           <Container fluid>
+            <img alt="CECATI" width="40px" src="http://www.cecati-125.edu.mx/assets/cecati125-logo-a79973b0.png"/>  
             <Navbar.Brand to="/" as={NavLink}>
-              {t("home")}
+              {t("CECATI")}
             </Navbar.Brand>
 
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <Dropdown>
-                <Dropdown.Toggle
-                  variant="outline-secondary"
-                  style={{ boxShadow: "2px 2px 5px grey" }}
-                >
-                  {t("languages")}
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  <Dropdown.Item onClick={() => i18n.changeLanguage("lt")}>
-                    {t("lt")}
-                  </Dropdown.Item>
-                  <Dropdown.Divider />
-                  <Dropdown.Item onClick={() => i18n.changeLanguage("en")}>
-                    {t("en")}{" "}
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-
               {isLoggedIn && (
                 <Nav className="d-flex w-100">
                   <Link
@@ -82,13 +64,13 @@ class Header extends React.Component {
                     to="/new-post"
                     as={NavLink}
                   >
-                    {t("newPost")}
+                    {t("Nueva Noticia")}
                   </Link>
                   <div
                     className="btn align-self-center text-secondary"
                     style={{ cursor: "default" }}
                   >
-                    <span>{`${t("signedInAs")}:  ${userName}`}</span>
+                    <span>{`${t("Usuario")}:  ${userName}`}</span>
                   </div>
                   <Link
                     className="button btn btn-outline-secondary me-1 my-2 text-decoration-none"
@@ -96,7 +78,7 @@ class Header extends React.Component {
                     as={NavLink}
                     onClick={this.logoutHandler}
                   >
-                    {t("logout")}
+                    {t("Cerrar Sesión")}
                   </Link>
                 </Nav>
               )}
@@ -108,21 +90,20 @@ class Header extends React.Component {
                     to="/login"
                     as={NavLink}
                   >
-                    {t("login")}
+                    {t("Iniciar Sesión")}
                   </Link>
                   <Link
                     className="button btn btn-outline-secondary me-1 my-1 text-decoration-none"
                     to="/register"
                     as={NavLink}
                   >
-                    {t("register")}
+                    {t("Registrarse")}
                   </Link>
                 </Nav>
               )}
             </Navbar.Collapse>
           </Container>
         </Navbar>
-        <Title />
       </Container>
     );
   }
